@@ -4,6 +4,7 @@ import com.example.hwswaggerint6.model.Faculty;
 import com.example.hwswaggerint6.service.FacultyService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -34,6 +35,11 @@ public class FacultyController {
     @GetMapping
     public Faculty get(@RequestParam Long id) {
         return facultyService.get(id);
+    }
+
+    @GetMapping("/by-color")
+    public List<Faculty> getByColor(@RequestParam String color) {
+        return facultyService.getByColor(color);
     }
 
     @GetMapping("/all")

@@ -5,7 +5,9 @@ import com.example.hwswaggerint6.model.Faculty;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class FacultyService {
@@ -46,6 +48,12 @@ public class FacultyService {
         } else {
             return facultyById.get(id);
         }
+    }
+
+    public List<Faculty> getByColor(String color) {
+        return facultyById.values().stream()
+                .filter(faculty -> faculty.getColor().equals(color))
+                .collect(Collectors.toList());
     }
 
     public Map<Long, Faculty> getAll() {

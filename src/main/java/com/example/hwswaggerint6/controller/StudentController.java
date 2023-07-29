@@ -4,6 +4,7 @@ import com.example.hwswaggerint6.model.Student;
 import com.example.hwswaggerint6.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,13 +28,18 @@ public class StudentController {
     }
 
     @DeleteMapping
-    public Student delete(@RequestParam Long id) {
+    public Student delete(@RequestParam long id) {
         return studentService.delete(id);
     }
 
     @GetMapping
-    public Student get(@RequestParam Long id) {
+    public Student get(@RequestParam long id) {
         return studentService.get(id);
+    }
+
+    @GetMapping("/by-age")
+    public List<Student> getByAge(@RequestParam int age) {
+        return studentService.getByAge(age);
     }
 
     @GetMapping("/all")
